@@ -29,16 +29,13 @@ public class ChangeCarColor : MonoBehaviour
     private void Start()
     {
        
-        // Загружаем количество денег из сохранения
         playerMoney = PlayerPrefs.GetInt("Money", 0);
 
-        // Загружаем состояние покупок из сохранения
         bluePurchased = PlayerPrefs.GetInt("BluePurchased", 0) == 1;
         greenPurchased = PlayerPrefs.GetInt("GreenPurchased", 0) == 1;
         blackPurchased = PlayerPrefs.GetInt("BlackPurchased", 0) == 1;
 
 
-        // Устанавливаем начальные значения текстов
         blueButtonText.text = bluePurchased ? "Equipped" : "1000 $";
         greenButtonText.text = greenPurchased ? "Equipped" : "1000 $";
         blackButtonText.text = blackPurchased ? "Equipped" : "1000 $";
@@ -59,11 +56,9 @@ public class ChangeCarColor : MonoBehaviour
         if (carRenderer != null)
         {
             carRenderer.material = newMaterial;
-
-            // Сохраняем выбранный цвет
+     
             SaveCarColor(colorName);
 
-            // Обновляем текст кнопок
             UpdateButtonTextsForEquipped(equippedButton);
         }
        
@@ -71,7 +66,7 @@ public class ChangeCarColor : MonoBehaviour
 
     public void AttemptPurchase(int index)
     {
-        // Проверяем, был ли цвет уже куплен
+       
         bool isAlreadyPurchased = false;
 
         switch (index)
@@ -89,20 +84,20 @@ public class ChangeCarColor : MonoBehaviour
 
         if (isAlreadyPurchased)
         {
-            // Цвет уже куплен — просто применяем его
+           
             EquipColor(index);
         }
         else
         {
-            // Цвет не куплен — проверяем деньги
+            
             int price = 1000;
             if (playerMoney >= price)
             {
-                // Покупаем цвет
+                
                 playerMoney -= price;
                 SaveMoney();
 
-                // Отмечаем цвет как купленный и применяем его
+                
                 EquipColor(index);
                 MarkColorAsPurchased(index);
             }
@@ -117,7 +112,7 @@ public class ChangeCarColor : MonoBehaviour
 
     private void EquipColor(int index)
     {
-        // Применяем цвет
+        
         switch (index)
         {
             case 0:
@@ -135,7 +130,7 @@ public class ChangeCarColor : MonoBehaviour
 
     private void MarkColorAsPurchased(int index)
     {
-        // Помечаем цвет как купленный
+        
         switch (index)
         {
             case 0:
@@ -176,12 +171,12 @@ public class ChangeCarColor : MonoBehaviour
 
     private void UpdateButtonTextsForEquipped(TextMeshProUGUI equippedButton)
     {
-        // Сброс текста кнопок в зависимости от состояния покупки
+      
         blueButtonText.text = bluePurchased ? "Equip" : "1000 $";
         greenButtonText.text = greenPurchased ? "Equip" : "1000 $";
         blackButtonText.text = blackPurchased ? "Equip" : "1000 $";
 
-        // Устанавливаем "Equipped" для выбранной кнопки
+       
         equippedButton.text = "Equipped";
     }
 

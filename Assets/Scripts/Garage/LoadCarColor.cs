@@ -15,7 +15,6 @@ public class LoadCarColor : MonoBehaviour
         LoadColor();
     }
 
-    
     private void LoadColor()
     {
         string colorName = PlayerPrefs.GetString("CarColor", "Default");
@@ -33,7 +32,6 @@ public class LoadCarColor : MonoBehaviour
                 carRenderer.material = blackMaterial;
                 Debug.Log("Loaded black");
                 break;
-           
         }
     }
 }

@@ -16,13 +16,11 @@ public class OpenSettings : MonoBehaviour
         settingsButton.onClick.AddListener(ToggleSettingsWindow);
     }
 
-
     public void ToggleSettingsWindow()
     {
         settingsWindow.SetActive(true);
         
     }
-
 
     public void CloseSettingsWindow()
     {

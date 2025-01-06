@@ -13,7 +13,6 @@ namespace MidnightTestTask.Scripts.Multiplayer
         [SerializeField] private float _minZ;
         [SerializeField] private float _maxZ;
 
-
         private void Start()
         {
             Vector3 randomPosition = new Vector3(Random.Range(carPos.transform.position.x, carPos.transform.position.x +6f), carPos.transform.position.y, carPos.transform.position.z);
